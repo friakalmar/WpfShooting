@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\bgspace.jpg" />
+    <None Remove="Images\parcel.png" />
+    <None Remove="Images\ship.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\bgspace.jpg" />
+    <Resource Include="Images\parcel.png" />
+    <Resource Include="Images\ship.png" />
+  </ItemGroup>
+
+</Project>
