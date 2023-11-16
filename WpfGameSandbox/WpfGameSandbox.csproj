@@ -9,14 +9,20 @@
 
   <ItemGroup>
     <None Remove="Images\bgspace.jpg" />
+    <None Remove="Images\Enemy.png" />
     <None Remove="Images\parcel.png" />
     <None Remove="Images\ship.png" />
+    <None Remove="Images\shot.png" />
+    <None Remove="Images\SpaceShip.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Images\bgspace.jpg" />
+    <Resource Include="Images\Enemy.png" />
     <Resource Include="Images\parcel.png" />
     <Resource Include="Images\ship.png" />
+    <Resource Include="Images\shot.png" />
+    <Resource Include="Images\SpaceShip.png" />
   </ItemGroup>
 
 </Project>

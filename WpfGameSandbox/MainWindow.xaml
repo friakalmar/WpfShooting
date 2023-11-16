@@ -9,11 +9,11 @@
     <Window.Background>
         <ImageBrush ImageSource="/Images/bgspace.jpg"/>
     </Window.Background>
-    <Canvas>
-        <Image x:Name="Ship" Height="115" Canvas.Left="387" Source="/Images/ship.png" Stretch="Fill" Canvas.Top="309" Width="47" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+    <Canvas x:Name="GameCanvas">
+        <Image x:Name="Ship" Width="60" Height="60" Canvas.Left="389" Source="/Images/SpaceShip.png" Stretch="Fill" Canvas.Top="366"  HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Image x:Name="Parcel" Height="56" Canvas.Left="406" Source="/Images/parcel.png" Stretch="Fill" Canvas.Top="84" Width="47" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Rectangle Height="20" Canvas.Left="24" Stroke="Black" Canvas.Top="24" Width="200" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#FFEDEDED"/>
-        <Rectangle x:Name="LifeBar" Height="20" Canvas.Left="24" Stroke="Black" Canvas.Top="24" Width="20" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <Rectangle x:Name="LifeBar" Height="20" Canvas.Left="24" Stroke="Black" Canvas.Top="24" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFD8E2D8" Offset="0"/>
@@ -21,6 +21,9 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
+        <TextBlock x:Name="NrOfShots" Canvas.Left="678" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="24" Height="20" Width="72" Foreground="White"/>
+        <TextBlock x:Name="Score" Canvas.Left="678" TextWrapping="Wrap" Text="Score" Canvas.Top="67" Height="20" Width="72" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBlock x:Name="Life" Canvas.Left="678" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="92" Height="20" Width="72" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top"/>
     </Canvas>
 
 </Window>
