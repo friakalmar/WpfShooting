@@ -33,9 +33,10 @@ namespace WpfGameSandbox
         int ParcelTop = 0;
         int ParcelLeft { get; set; } = 200;
 
-        //Shot grafik
+        //Shot grafik som vi kan återanvända till alla skott
         BitmapImage shotTexture = new BitmapImage(new Uri("pack://application:,,,/Images/shot.png"));
 
+        //Bildreferens till fiendens grafik som vi kan återanvända
         BitmapImage enemyTexture = new BitmapImage(new Uri("pack://application:,,,/Images/Enemy.png"));
 
         //Skapar en tom lista som ska innehålla alla skott!
@@ -113,7 +114,7 @@ namespace WpfGameSandbox
             MoveShip(); 
             MoveParcel();
             CreateEnemies();
-            MoveEnemies();
+            MoveEnemiesOnly();
             DrawScore();
         }
 
@@ -172,12 +173,23 @@ namespace WpfGameSandbox
             EnemyDelay--;
             if(EnemyDelay < 0)
             {
+                //Återställ delay
                 EnemyDelay = 30;
+
+                //Skapa ett nytt bildobjekt och sätt bredd och höjd
                 Image img = new Image() { Width=50,Height=50};
+                
+                //Lägg till vår inlästa grafik för den här bilden
+                img.Source = enemyTexture;
+
+                //Sätt positionerna
                 Canvas.SetLeft(img, random.Next(10,500));
                 Canvas.SetTop(img,0);
-                img.Source = enemyTexture;
+                
+                //Lägg ut bilden på skärmen
                 GameCanvas.Children.Add(img);
+
+                //Lägg till bilden i vår lista med bilder
                 Enemies.Add(img);
             }
         }
@@ -217,6 +229,28 @@ namespace WpfGameSandbox
             //Radera alla osynliga bilder från minnet!!
 
             Shots.RemoveAll(x => x.Visibility == Visibility.Hidden);
+            Enemies.RemoveAll(x => x.Visibility == Visibility.Hidden);
+        }
+
+        private void MoveEnemiesOnly()
+        {
+            //Vi loopar igenom varje enemy i vår lista 
+            foreach (var enemy in Enemies)
+            {
+                //Sätter ny position på vår fiende.
+                Canvas.SetTop(enemy, Canvas.GetTop(enemy) + 5);
+
+                //Vi gör bilden osynlig om den passerat botten
+                if (Canvas.GetTop(enemy) > 500)
+                {
+                    enemy.Visibility = Visibility.Hidden;
+                 
+                    //Vi tar bort bilden från skärmen / vår canvas
+                    GameCanvas.Children.Remove(enemy);
+                }
+            }
+            //Vi raderar alla fiender från vår lista - OBS! Det går inte att radera mitt i en loop.
+            //Därför raderar vi alla på det här sättet när vi loopat igenom.
             Enemies.RemoveAll(x => x.Visibility == Visibility.Hidden);
         }
         private void CreateShot()
